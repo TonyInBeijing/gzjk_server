@@ -1,19 +1,14 @@
 var express = require('express');
 var router = express.Router();
-const mock = require('mock');
+const { contentList } = require('../mock/mock');
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+// 首页内容详情
 router.post('/contentList', (req, res, next) => {
-  const contentList = mock.mock({
-    'contentList|1-10':[
-      {
-        'contentId|+1':1,
-        'contentTitle|3-5': /[a-z][A-Z]/,
-      }
-    ]
-  });
+  const contents = contentList;
+  res.json({ code: 200, list: contents });
 });
 module.exports = router;
