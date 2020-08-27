@@ -5,6 +5,14 @@ Random.extend({
         const favorStatus = ['0', '1',];
         return this.pick(favorStatus);
     },
+    sexRes: function () {
+        const sexStatus = [1, 2];
+        return this.pick(sexStatus);
+    },
+    bodyRes: function () {
+        const resStatus = [0, 1];
+        return this.pick(resStatus);
+    }
 });
 const contentList = Mock.mock({
     'contentlist|10': [
@@ -20,4 +28,14 @@ const contentList = Mock.mock({
     ],
 });
 
+const randomBodyResList = Mock.mock({
+    'list|76': [
+        {
+            'sex': '@sexRes',
+            'age|35-55': 1,
+            'resStatus': '@bodyRes'
+        }
+    ]
+});
 module.exports.contentList = contentList;
+module.exports.randomBodyResList = randomBodyResList;
