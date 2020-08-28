@@ -17,19 +17,6 @@ Random.extend({
     return this.pick(resStatus);
   }
 });
-const contentList = Mock.mock({
-  'contentlist|10': [
-    {
-      'contentId|+1': 1,
-      'contentTitle': Random.csentence(20),
-      'contentPoster': Random.image('200x400'),
-      'contentAvatar': Random.image('48x48'),
-      'contentAuthor': '胖仔',
-      'contentFavorNum|1-100000': 200,
-      'isFavor': '@isFavor',
-    }
-  ],
-});
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
@@ -37,7 +24,19 @@ router.get('/', function (req, res, next) {
 
 // 首页内容详情
 router.post('/contentList', (req, res, next) => {
-  const contents = contentList;
+  const contents = Mock.mock({
+    'contentlist|10': [
+      {
+        'contentId|+1': 1,
+        'contentTitle': Random.csentence(20),
+        'contentPoster': Random.image('200x400'),
+        'contentAvatar': Random.image('48x48'),
+        'contentAuthor': '胖仔',
+        'contentFavorNum|1-100000': 200,
+        'isFavor': '@isFavor',
+      }
+    ],
+  });
   res.json({ code: 200, list: contents });
 });
 
@@ -45,7 +44,7 @@ router.post('/contentList', (req, res, next) => {
 // 生成更年期测试数据
 router.get('/testdata', (req, res, next) => {
   const bodyResList = Mock.mock({
-    'list|76': [
+    'list|84': [
       {
         'sex': '@sexRes',
         'age|35-55': 1,
@@ -53,7 +52,7 @@ router.get('/testdata', (req, res, next) => {
       }
     ]
   }).list;
-  let resList = ['测试用户'];
+  let resList = [1, '测试用户'];
   let sexFlage = 0; ageFlage = 0;
   for (let i in bodyResList) {
     const innerItem = bodyResList[i];
