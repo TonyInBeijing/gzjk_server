@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-// const { contentList, randomBodyResList } = require('../mock/mock');
 const Mock = require('mockjs');
 const Random = Mock.Random;
 Random.extend({
