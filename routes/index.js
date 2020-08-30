@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Mock = require('mockjs');
+// 随机数
 const Random = Mock.Random;
 Random.extend({
   isFavor: function () {
