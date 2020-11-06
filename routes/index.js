@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-// const { contentList, randomBodyResList } = require('../mock/mock');
 const Mock = require('mockjs');
+// 随机数生成规则
 const Random = Mock.Random;
 Random.extend({
   isFavor: function () {
@@ -17,7 +17,6 @@ Random.extend({
     return this.pick(resStatus);
   }
 });
-/* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
